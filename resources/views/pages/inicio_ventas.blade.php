@@ -2,7 +2,7 @@
 
 @section('section-form')
     <div class="container">
-        <p class="display-6" style="text-align: center">Ventas Registradas</p>
+        <p class="display-6" style="text-align: center">Lista de ventas registradas</p>
         <table class="table col-9 mx-auto">
            <thead>
                 <tr>
