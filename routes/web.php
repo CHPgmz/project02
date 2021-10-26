@@ -21,8 +21,12 @@ Route::get('/detalle/{id}', [PagesController::class, 'detalle'])->name('pages.de
 
 
 ///Rutas para las ventas
+//
+Route::get('/venta_detalle/{id}', [PagesController::class, 'ventaDetalle'])->name('ventas.detalle');
+
+Route::delete('/eliminar/{id}', [PagesController::class, 'ventaEliminar'])->name('venta.eliminar');
+
 Route::get('inicio_ventas', [PagesController::class, 'inicioVentas'])->name('ventas');
 
 Route::get('form', [PagesController::class, 'formulario'])->name('formulario.venta');
-
-Route::post('form', [PagesController::class, 'insertVenta'])->name('venta.insertar');
+Route::post('/form', [PagesController::class, 'insertVenta'])->name('venta.insertar');

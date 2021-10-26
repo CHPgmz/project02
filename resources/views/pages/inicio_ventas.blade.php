@@ -17,12 +17,23 @@
            <tbody>
                @foreach($ventasList as $item )
                 <tr>
-                    <th scope="row">{{$item->id_venta}}</th>
+                    <th scope="row">{{$item->id}}</th>
                     <td>{{ $item->id_user }}</td>
-                    <td>{{ $item->producto }}</td>
+                    <td>
+                        <a href="{{ route('ventas.detalle', $item->id) }}">
+                        {{ $item->producto }}
+                        </a>
+                    </td>
                     <td>{{ $item->cantidad }}</td>
                     <td>{{ $item->precio }}</td>
                     <td>{{ $item->fecha }}</td>
+                    <td>
+                        <form action="{{ route('venta.eliminar', $item->id) }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger btn-sm" type="submit" value="Delete">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
                @endforeach
            </tbody>

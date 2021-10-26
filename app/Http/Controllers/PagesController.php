@@ -48,6 +48,12 @@ class PagesController extends Controller
         return view('pages.inicio_ventas', compact('ventasList'));
     }
 
+    public function ventaDetalle($id)
+    {
+        $ventaD = App\Models\Ventas::findOrFail($id);
+        return view('pages.venta_detalle', compact('ventaD'));
+    }
+
     public function formulario()
     {
         return view('pages.form');
@@ -70,6 +76,14 @@ class PagesController extends Controller
         $newVenta->precio = $request->precio;
         $newVenta->fecha = $request->fecha;
         $newVenta->save();
+
+        return back();
+    }
+
+    public function ventaEliminar($id)
+    {
+        $ventaElim = App\Models\Ventas::find($id);
+        $ventaElim->delete();
 
         return back();
     }
