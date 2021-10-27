@@ -35,3 +35,7 @@ Route::get('inicio_ventas', [PagesController::class, 'inicioVentas'])->name('ven
 Route::get('form', [PagesController::class, 'formulario'])->name('formulario.venta');
 
 Route::post('/form', [PagesController::class, 'insertVenta'])->name('venta.insertar');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
