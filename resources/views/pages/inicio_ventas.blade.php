@@ -1,10 +1,11 @@
 @extends('pages.form')
 
 @section('section-form')
+{{-- <p>Bienvemido: {{ Auth::user()->name }} </p> --}}
     <div class="container">
         <p class="display-6" style="text-align: center">Lista de ventas registradas</p>
-        <table class="table col-9 mx-auto">
-           <thead>
+        <table class="table  table-striped col-10 mx-auto ">
+           <thead class="text-center">
                 <tr>
                     <th scope="col">#ID</th>
                     <th scope="col">#ID Usuario</th>
@@ -12,9 +13,10 @@
                     <th scope="col">Cantidad</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Fecha</th>
+                    <th scope="col">Acciones</th>
                 </tr>
            </thead> 
-           <tbody>
+           <tbody class="text-center">
                @foreach($ventasList as $item )
                 <tr>
                     <th scope="row">{{$item->id}}</th>
