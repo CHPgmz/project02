@@ -1,7 +1,6 @@
 @extends('pages.form')
 
 @section('section-form')
-{{-- <p>Bienvemido: {{ Auth::user()->name }} </p> --}}
     <div class="container">
         <p class="display-6" style="text-align: center">Lista de ventas registradas</p>
         <table class="table  table-striped col-10 mx-auto ">

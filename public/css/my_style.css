@@ -1,0 +1,15 @@
+#contM {
+    display: grid;
+    grid-template-columns: 100px 100px;
+    column-gap: 10%;
+    row-gap: 50px;
+}
+
+#box1 {
+    width: 300px;
+    background-color: cyan;
+    padding: 10px;
+    border-radius: 10px;
+    color: black;
+    text-align: center;
+}

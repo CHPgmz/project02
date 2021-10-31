@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
@@ -11,7 +13,7 @@ class PagesController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('auth')->only('ventaDetalle', 'inicioVentas');
+        $this->middleware('auth')->only('ventaDetalle', 'inicioVentas', 'homePage');
     }
 
 
@@ -38,19 +40,23 @@ class PagesController extends Controller
     public function insertVenta(Request $request)
     {
         $request->validate([
-            'id_user' => 'required',
+            //'id_user' => 'required',
             'product' => 'required',
             'cantidad' => 'required',
             'precio' => 'required',
-            'fecha' => 'required',
+            //'fecha' => 'required',
         ]);
 
+        $fechaA = Carbon::now();
+
         $newVenta = new App\Models\Ventas;
-        $newVenta->id_user = $request->id_user;
+        //$newVenta->id_user = $request->id_user;
+        $userId = Auth::user()->id;
+        $newVenta->id_user =  $userId;
         $newVenta->producto = $request->product;
         $newVenta->cantidad = $request->cantidad;
         $newVenta->precio = $request->precio;
-        $newVenta->fecha = $request->fecha;
+        $newVenta->fecha = $fechaA->format('Y-m-d');
         $newVenta->save();
 
         return back();
@@ -62,6 +68,16 @@ class PagesController extends Controller
         $ventaElim->delete();
 
         return back();
+    }
+
+    public function homePage()
+    {
+        $fechaA = Carbon::now();
+        $fecha = $fechaA->format('d-m-Y');
+
+        $venT = App\Models\Ventas::count('id');
+        $ventS = App\Models\Ventas::sum('precio');
+        return view('pages.home_page', compact('venT', 'ventS', 'fecha'));
     }
 }
 

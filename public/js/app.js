@@ -1,7 +1,6 @@
-
-
-if ( navigator.serviceWorker ) {
-    navigator.serviceWorker.register('/sw.js');
+if (navigator.serviceWorker) {
+    //navigator.serviceWorker.register('/sw.js');
+    navigator.serviceWorker.register("{{ asset('public/sw.js') }}");
 }
 
 // if(window.caches){

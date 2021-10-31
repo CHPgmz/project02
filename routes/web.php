@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PagesController;
 
 
 
-Route::get('/', [PagesController::class, 'inicioVentas'])->name('inicio');
+Route::get('/', [PagesController::class, 'homePage'])->name('inicio');
 
 
 //
@@ -26,6 +27,8 @@ Route::post('/form', [PagesController::class, 'insertVenta'])->name('venta.inser
 Auth::routes();
 
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('home_page', [PagesController::class, 'homePage'])->name('home.page');
 
 
 
