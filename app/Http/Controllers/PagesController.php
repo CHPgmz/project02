@@ -13,7 +13,7 @@ class PagesController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('auth')->only('ventaDetalle', 'inicioVentas', 'homePage');
+        $this->middleware('auth')->only('ventaDetalle', 'inicioVentas', 'homePage', 'updateVenta');
     }
 
 
@@ -70,14 +70,34 @@ class PagesController extends Controller
         return back();
     }
 
+    public function editarVenta($id)
+    {
+        $venta = App\Models\Ventas::findOrFail($id);
+        return view('pages.editar_venta', compact('venta'));
+    }
+
+    public function updateVenta(Request $request, $id)
+    {
+
+        $ventaUpd = App\Models\Ventas::findOrFail($id);
+        $ventaUpd->id_user = $request->id_user;
+        $ventaUpd->producto = $request->product;
+        $ventaUpd->cantidad = $request->cantidad;
+        $ventaUpd->precio = $request->precio;
+        $ventaUpd->fecha = $request->fecha;
+        $ventaUpd->save();
+
+        return back();
+    }
+
     public function homePage()
     {
         $fechaA = Carbon::now();
-        $fecha = $fechaA->format('d-m-Y');
+        //$fecha = $fechaA->format('d-m-Y');
 
         $venT = App\Models\Ventas::count('id');
         $ventS = App\Models\Ventas::sum('precio');
-        return view('pages.home_page', compact('venT', 'ventS', 'fecha'));
+        return view('pages.home_page', compact('venT', 'ventS', 'fechaA'));
     }
 }
 

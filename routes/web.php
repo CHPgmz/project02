@@ -19,6 +19,10 @@ Route::delete('/eliminar/{id}', [PagesController::class, 'ventaEliminar'])->name
 //lista de todas las ventas
 Route::get('inicio_ventas', [PagesController::class, 'inicioVentas'])->name('ventas');
 
+//editar venta
+Route::get('/editar/{id}', [PagesController::class, 'editarVenta'])->name('editar.venta');
+Route::post('/editar/{id}', [PagesController::class, 'updateVenta'])->name('venta.update');
+
 //Formualario de la venta
 Route::get('form', [PagesController::class, 'formulario'])->name('formulario.venta');
 

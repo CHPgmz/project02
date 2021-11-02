@@ -1,6 +1,9 @@
 @extends('pages.form-page')
 
 @section('section-form')
+
+ <a href="{{ route('formulario.venta') }}" class="btn btn-primary" style="margin: 0% 0% 1% 45%">Nuevo registro</a>
+
 <div class="row row-cols-1 row-cols-md-3 g-4 mx-auto">
   <div class="col">
     <div class="card border-primary">
@@ -10,7 +13,7 @@
         <li class="list-group-item">Total: {{ $ventS }} pesos</li>
       </ul>
       <div class="card-footer">
-          <small class="text-muted text-center">Fecha: {{ $fecha }}</small>
+          <small class="text-muted text-center">Fecha: {{ $fechaA }}</small>
       </div>
     </div>
   </div>

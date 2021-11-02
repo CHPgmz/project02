@@ -1,8 +1,12 @@
 @extends('pages.form')
 
 @section('section-form')
+    
+    <!-- <a href="{{ route('formulario.venta') }}" >Nuevo registro</a> -->
+    <p style="font-size: 18px; text-align: center; font-weight: bold; margin-top: -20px;">Ventas Registradas</p>
+ <a href="{{ route('formulario.venta') }}" class="btn btn-primary" style="margin: 0% 0% 1% 10%">Nuevo registro</a>
     <div class="container">
-        <p class="display-6" style="text-align: center">Lista de ventas registradas</p>
+    
         <table class="table  table-striped col-10 mx-auto ">
            <thead class="text-center">
                 <tr>
@@ -29,7 +33,8 @@
                     <td>{{ $item->precio }}</td>
                     <td>{{ $item->fecha }}</td>
                     <td>
-                        <form action="{{ route('venta.eliminar', $item->id) }}" method="POST">
+                        <a href="{{ route('editar.venta', $item->id) }}" class="btn btn-warning btn-sm" >Editar</a>
+                        <form action="{{ route('venta.eliminar', $item->id) }}" method="POST" class="d-inline">
                             @method('DELETE')
                             @csrf
                             <button class="btn btn-danger btn-sm" type="submit" value="Delete">Eliminar</button>
