@@ -1,7 +1,7 @@
 @extends('pages.form-page')
 
 @section('section-form')
-<p>Editar venta</p>
+<p class="fw-bold fs-4 text-center">Editar datos de la venta</p>
 
 
 <form action="{{ route('venta.update', $venta->id) }}" method="POST">
@@ -36,7 +36,7 @@
                     <input type="date" class="form-control" id="fecha" name="fecha" value="{{ $venta->fecha }}" required>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary">Editar</button>
+                <button type="submit" class="btn btn-success text-center">Editar</button>
     </form>
     </div>
     </div>

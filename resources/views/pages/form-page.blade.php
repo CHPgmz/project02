@@ -5,12 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Ventas</title>
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+{{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> --}}
 
-<!--     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/my_style.css') }}" type="text/css"> -->
+    <link rel="stylesheet" href="{{ asset('css/my_style.css') }}" type="text/css">
 
 </head>
 
@@ -50,10 +50,10 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                                data-bs-toggle="dropdown" aria-expanded="false" style="margin-left: 1000%">
                                 {{ Auth::user()->name }}
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="margin-left: 950%;">
                                 <li><a class="dropdown-item" href="#">Configuración</a></li>
                                 <li>
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -78,15 +78,15 @@
 
     @yield('section-form')
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+  </script> --}}
 
-<!--    <script src="{{ asset('js/bootstrap.js') }}"> </script>
+   <script src="{{ asset('js/bootstrap.js') }}"> </script>
     <script src="{{ asset('js/bootstrap.min.js') }}"> </script>
     <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script> -->
-
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+ 
 
 </body>
 
