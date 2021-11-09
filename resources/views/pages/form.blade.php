@@ -1,7 +1,7 @@
 @extends('pages.form-page')
 
 @section('section-form')
-    <p style="font-size: 24px; font-weight: bold; text-align: center;">Registrar ventas</p>
+    <p style="font-size: 18px; font-weight: bold; text-align: center;">Registrar venta</p>
     <!--@if (session('mensaje'))
           <div class="alert alert-success">
             {{ session('mensaje') }}
@@ -70,7 +70,7 @@
                     <input type="date" class="form-control" id="fecha" name="fecha" value="{{ old('fecha') }}" required>
                 </div> -->
                 <br>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
     </div>
     </div>

@@ -17,7 +17,7 @@
             <div class="row justify-content-md-center h-100">
                 <div class="card-wrapper">
                     <div class="brand">
-                        <img src="{{ asset('img/logo.jpg') }}" alt="logo">
+                        <img src="{{ asset('img/logo-compan.jpg') }}" alt="logo" class="rounded">
                     </div>
                     <div class="card fat">
                         <div class="card-body">
@@ -80,7 +80,7 @@
                             </form>
                         </div>
                     </div>
-                    {{-- <div class="footer">Copyright &copy; 2021 &mdash; Genius</div> --}}
+                     <div class="footer">Copyright &copy; 2021 &mdash; Company Genius</div> 
                 </div>
             </div>
         </div>

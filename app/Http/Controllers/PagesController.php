@@ -21,7 +21,7 @@ class PagesController extends Controller
 
     public function inicioVentas()
     {
-        $ventasList = App\Models\Ventas::All();
+        $ventasList = App\Models\Ventas::paginate(10);
 
         return view('pages.inicio_ventas', compact('ventasList'));
     }
@@ -92,12 +92,13 @@ class PagesController extends Controller
 
     public function homePage()
     {
+        $ventasList = App\Models\Ventas::paginate(3);
         $fechaA = Carbon::now();
         //$fecha = $fechaA->format('d-m-Y');
 
         $venT = App\Models\Ventas::count('id');
         $ventS = App\Models\Ventas::sum('precio');
-        return view('pages.home_page', compact('venT', 'ventS', 'fechaA'));
+        return view('pages.home_page', compact('venT', 'ventS', 'fechaA', 'ventasList'));
     }
 }
 
