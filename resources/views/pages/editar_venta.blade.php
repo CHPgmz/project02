@@ -1,9 +1,7 @@
-@extends('pages.form-page')
+@extends('.home')
 
-@section('section-form')
-<p class="fw-bold fs-4 text-center">Editar datos de la venta</p>
-
-
+@section('contenido')
+<p style="font-size: 18px; font-weight: bold; text-align: center;">Editar</p>
 <form action="{{ route('venta.update', $venta->id) }}" method="POST">
         @method('POST')
         @csrf
@@ -37,8 +35,8 @@
                 </div>
                 <br>
                 <button type="submit" class="btn btn-success text-center">Editar</button>
+            </div>
+        </div>
     </form>
-    </div>
-    </div>
 
 @endsection

@@ -3,21 +3,22 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\InventarioController;
 
 
 
 Route::get('/', [PagesController::class, 'homePage'])->name('inicio');
-
+Route::get('home', [PagesController::class, 'homePage'])->name('home');
 
 //
 //Detalle de la venta
-Route::get('/venta_detalle/{id}', [PagesController::class, 'ventaDetalle'])->name('ventas.detalle');
+//Route::get('/venta_detalle/{id}', [PagesController::class, 'ventaDetalle'])->name('ventas.detalle');
 
 //eliminar venta
-Route::delete('/eliminar/{id}', [PagesController::class, 'ventaEliminar'])->name('venta.eliminar');
+Route::delete('/delete/{id}', [PagesController::class, 'ventaEliminar'])->name('eliminar.venta');
 
 //lista de todas las ventas
-Route::get('inicio_ventas', [PagesController::class, 'inicioVentas'])->name('ventas');
+Route::get('ventas', [PagesController::class, 'ventasRegistradas'])->name('ventas');
 
 //editar venta
 Route::get('/editar/{id}', [PagesController::class, 'editarVenta'])->name('editar.venta');
@@ -30,13 +31,20 @@ Route::post('/form', [PagesController::class, 'insertVenta'])->name('venta.inser
 
 Auth::routes();
 
-Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('home_page', [PagesController::class, 'homePage'])->name('home.page');
+//Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
+///Inventaio
+//
+//
+Route::get('inventario', [InventarioController::class, 'invRegistradas'])->name('inventario.home');
 
+Route::get('invForm', [InventarioController::class, 'inventForm'])->name('inventario.form');
+
+Route::delete('/eliminar/{id}', [InventarioController::class, 'invEliminar'])->name('inv.eliminar');
+
+Route::post('/invent', [InventarioController::class, 'insertIventario'])->name('inv.insert');
 
 
 

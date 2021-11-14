@@ -4,27 +4,34 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="white-box">
-            <h3 class="box-title">Tabla Inventario</h3>
-            <p class="text-muted">Inventario Registradas<code></code></p>
+            <h3 class="box-title">Tabla Ventas</h3>
+            <p class="text-muted">Ventas Registradas<code></code></p>
             <div class="table-responsive">
                 <table class="table text-nowrap">
                     <thead>
                         <tr>
                             <th class="border-top-0">#ID</th>
-                            <th class="border-top-0">#DESCRIPCIÓN</th>
+                            <th class="border-top-0">#ID-USER</th>
+                            <th class="border-top-0">PRODUCTO</th>
                             <th class="border-top-0">CANTIDAD</th>
+                            <th class="border-top-0">PRECIO</th>
                             <th class="border-top-0">FECHA</th>
+                            <th class="border-top-0">ACCIONES</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($invList as $item )
+                        @foreach($ventasList as $item )
                         <tr>
                             <td>{{$item->id}}</td>
-                            <td>{{ $item->descripcion }}</td>
+                            <td>{{ $item->id_user }}</td>
+                            <td>{{ $item->producto }}</td>
                             <td>{{ $item->cantidad }}</td>
+                            <td>{{ $item->precio }}</td>
                             <td>{{ $item->fecha }}</td>
                             <td>
-                                <form action="{{ route('inv.eliminar', $item->id) }}" method="POST" class="d-inline">
+                                <a href="{{ route('editar.venta', $item->id) }}" class="btn btn-warning btn-sm" >Editar</a>
+
+                                <form action="{{ route('eliminar.venta', $item->id) }}" method="POST" class="d-inline">
                                     @method('DELETE')
                                     @csrf
                                     <button class="btn btn-danger btn-sm" type="submit" value="Delete">Eliminar</button>
@@ -35,7 +42,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $invList->links() }}
+                {{ $ventasList->links() }}
             </div>
         </div>
     </div>

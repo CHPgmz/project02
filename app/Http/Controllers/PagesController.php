@@ -19,11 +19,11 @@ class PagesController extends Controller
 
     ///Todo lo relacionado con las ventas
 
-    public function inicioVentas()
+    public function ventasRegistradas()
     {
         $ventasList = App\Models\Ventas::paginate(10);
 
-        return view('pages.inicio_ventas', compact('ventasList'));
+        return view('pages.ventas', compact('ventasList'));
     }
 
     public function ventaDetalle($id)
@@ -40,11 +40,11 @@ class PagesController extends Controller
     public function insertVenta(Request $request)
     {
         $request->validate([
-            //'id_user' => 'required',
+           
             'product' => 'required',
             'cantidad' => 'required',
             'precio' => 'required',
-            //'fecha' => 'required',
+           
         ]);
 
         $fechaA = Carbon::now();

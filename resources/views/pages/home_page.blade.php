@@ -1,6 +1,6 @@
-@extends('pages.form-page')
+@extends('.home')
 
-@section('section-form')
+@section('contenido')
 
 <div class="row justify-content-center">
     <div class="col-lg-4 col-md-12">
@@ -44,13 +44,7 @@
         </div>
     </div>
 </div>
-<!-- ============================================================== -->
-<!-- PRODUCTS YEARLY SALES -->
-<!-- ============================================================== -->
-
-<!-- ============================================================== -->
-<!-- RECENT SALES -->
-<!-- ============================================================== -->
+<!-- Datos del home page-->
 <div class="row">
     <div class="col-md-12 col-lg-12 col-sm-12">
         <div class="white-box">
