@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use PDF;
+use Dompdf\Dompdf;
+
+include_once "../vendor/autoload.php";
+
 
 class PagesController extends Controller
 {
@@ -13,7 +18,7 @@ class PagesController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('auth')->only('ventaDetalle', 'inicioVentas', 'homePage', 'updateVenta');
+        $this->middleware('auth')->only('ventaDetalle', 'inicioVentas', 'homePage', 'updateVenta', 'ReporteV');
     }
 
 
@@ -21,7 +26,7 @@ class PagesController extends Controller
 
     public function ventasRegistradas()
     {
-        $ventasList = App\Models\Ventas::paginate(10);
+        $ventasList = App\Models\Ventas::all();//paginate(10);
 
         return view('pages.ventas', compact('ventasList'));
     }
@@ -40,11 +45,11 @@ class PagesController extends Controller
     public function insertVenta(Request $request)
     {
         $request->validate([
-           
+
             'product' => 'required',
             'cantidad' => 'required',
             'precio' => 'required',
-           
+
         ]);
 
         $fechaA = Carbon::now();
@@ -100,12 +105,29 @@ class PagesController extends Controller
         $ventS = App\Models\Ventas::sum('precio');
         return view('pages.home_page', compact('venT', 'ventS', 'fechaA', 'ventasList'));
     }
+
+    /////Reportes
+    public function ReporteV()
+    {
+        
+        $pdf = resolve('dompdf.wrapper');
+        $pdf = \PDF::loadView('reportes.reporte_venta');
+        return $pdf->download('reporte_venta.pdf');
+        // return view('reportes.reporte_venta');
+    }
 }
 
 
 
 
 
+        //$dompdf = new Dompdf();
+       // $dompdf = new Dompdf();
+        //$dompdf->loadView('reportes.reporte_venta');
+        //$dompdf->setPaper('A4', 'landsape');
+        //$dompdf->render();
+        //header("Content-type: application/pdf");
+        //header("Content-Disposition: inline; filename=documento.pdf");
 // public function fotos()
     // {
     //     return view('fotos');

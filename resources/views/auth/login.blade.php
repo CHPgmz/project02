@@ -12,12 +12,17 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/my-login.css') }}">
+    <style type="text/css">
+        a, a:hover{
+          color:#333
+        }
+    </style>
 
 <body class="my-login-page">
 
     <section class="h-100">
-        <div class="container h-100">
-            <div class="row justify-content-md-center h-100">
+        <div class="container h-200">
+            <div class="row justify-content-md-center h-200">
                 <div class="card-wrapper">
                     <div class="brand">
                         <img src="{{ asset('img/logo-compan.jpg') }}" alt="logo" class="rounded">
@@ -32,7 +37,7 @@
 
                                     <input id="email" type="email" class="form-control @error('email') is-invalid
                                         @enderror" name="email" value="{{ old('email') }}" required autocomplete="off"
-                                        autofocus>
+                                        autofocus style=" border:  1px solid #39c;">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -48,8 +53,12 @@
 
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="current-password">
-
+                                        required autocomplete="current-password" style=" border:  1px solid #39c;">
+                                     <div style="margin-bottom:05px;">
+                                          <input  type="checkbox" id="mostrar_contrasena" title="clic para mostrar contraseña"/>
+                                          &nbsp;&nbsp;Mostrar Contraseña</div>
+                                      </div>
+                                          
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -58,20 +67,20 @@
 
                                 </div>
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <div class="custom-checkbox custom-control">
                                         <input type="checkbox" name="remember" id="remember"
                                             {{ old('remember') ? 'checked' : '' }} />
                                         <label for="remember" class="custom-control-label">Recordarmelo</label>
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="form-group m-0">
+                                <div class="form-group  m-0">
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Login') }}
                                     </button>
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        <a class="btn btn-link" href="{{ route('password.request') }}" style="margin-left: 20px;">
                                             {{ __('Olvidaste la contraseña') }}
                                         </a>
                                     @endif
@@ -93,6 +102,19 @@
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/my-login.js') }}"></script>
+    <script type="text/javascript">
+          $(document).ready(function () {
+          $('#mostrar_contrasena').click(function () {
+            if ($('#mostrar_contrasena').is(':checked')) {
+              $('#password').attr('type', 'text');
+            } else {
+              $('#password').attr('type', 'password');
+            }
+          });
+        });
+    
+    </script>
+   
 
 </body>
 </html>

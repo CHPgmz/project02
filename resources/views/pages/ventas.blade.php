@@ -1,3 +1,4 @@
+
 @extends('.home')
 
 @section('contenido')
@@ -5,7 +6,12 @@
     <div class="col-sm-12">
         <div class="white-box">
             <h3 class="box-title">Tabla Ventas</h3>
-            <p class="text-muted">Ventas Registradas<code></code></p>
+            <!-- <p class="text-muted">Ventas Registradas<code></code></p> -->
+            <div class="rw-lg-3">
+            
+                <a href="{{ route('reporte.venta') }}" class="btn btn-info">Reporte mensual</a>
+                <a href="{{ route('reporte.venta') }}" class="btn btn-info">Reporte</a>
+            </div>
             <div class="table-responsive">
                 <table class="table text-nowrap">
                     <thead>
@@ -29,7 +35,7 @@
                             <td>{{ $item->precio }}</td>
                             <td>{{ $item->fecha }}</td>
                             <td>
-                                <a href="{{ route('editar.venta', $item->id) }}" class="btn btn-warning btn-sm" >Editar</a>
+                                <a href="{{ route('editar.venta', $item->id) }}" class="btn btn-success btn-sm" >Editar</a>
 
                                 <form action="{{ route('eliminar.venta', $item->id) }}" method="POST" class="d-inline">
                                     @method('DELETE')
@@ -42,7 +48,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $ventasList->links() }}
+                
             </div>
         </div>
     </div>

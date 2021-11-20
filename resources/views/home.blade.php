@@ -166,12 +166,12 @@
 
                 <div class="page-breadcrumb bg-white">
                     <div class="row align-items-center">
-                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <div class="rw-lg-3 col-md-4 rw-sm-4 rw-xs-12">
                             <a href="{{ route('formulario.venta') }}" class="btn btn-primary">Registrar Venta</a>
                             <a href="{{ route('inventario.form') }}" class="btn btn-primary ms-2" >Registrar Inventario</a>
                         </div>
                         
-                        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                        <div class="rw-lg-9 col-sm-8 rw-md-8 rw-xs-12">
                             <div class="d-md-flex">
                                 <ol class="breadcrumb ms-auto">
                                     <li><a href="#" class="fw-normal">Dashboard</a></li>

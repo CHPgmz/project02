@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\InventarioController;
+use Dompdf\Dompdf;
 
 
 
@@ -45,6 +46,10 @@ Route::get('invForm', [InventarioController::class, 'inventForm'])->name('invent
 Route::delete('/eliminar/{id}', [InventarioController::class, 'invEliminar'])->name('inv.eliminar');
 
 Route::post('/invent', [InventarioController::class, 'insertIventario'])->name('inv.insert');
+
+////Reportes
+
+Route::get('reporte', [PagesController::class, 'ReporteV'])->name('reporte.venta');
 
 
 
