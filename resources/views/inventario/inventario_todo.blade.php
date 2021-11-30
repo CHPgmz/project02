@@ -5,7 +5,10 @@
     <div class="col-sm-12">
         <div class="white-box">
             <h3 class="box-title">Tabla Inventario</h3>
-            <p class="text-muted">Inventario Registradas<code></code></p>
+            <div class="rw-lg-3">
+                <a href="{{ route('reporte.inventario') }}" class="btn btn-info">Reporte mensual</a>
+                <a href="{{ route('reporte.inventario') }}" class="btn btn-info">Reporte</a>
+            </div>
             <div class="table-responsive">
                 <table class="table text-nowrap">
                     <thead>

@@ -13,7 +13,6 @@
       border-collapse: collapse;
       margin: auto;
       font-family: Arial, Helvetica, sans-serif
-
     }
 
     th, td {
@@ -61,7 +60,7 @@
 <body>
 <div class="container">
   <div class="head">
-    <p class="titulo">Reporte de Ventas</p>
+    <p class="titulo">Reporte de Inventario</p>
     <p class="fecha">{{ $fechaA }}</p>
   </div>
 	
@@ -69,20 +68,19 @@
       <thead id="1">
         <tr id="1">
           <th>ID</th>
-          <th>Producto</th>
+          <th>Descripcion</th>
           <th>Cantidad</th>
-          <th>Precio</th>
           <th>Fecha</th>
+          
         </tr>
       </thead>
       <tbody>
-        {{$ventasList = App\Models\Ventas::all();}}
-        @foreach($ventasList as $item )
+        {{$invList = App\Models\Inventarios::all();}}
+        @foreach($invList as $item )
         <tr>
           <td>{{$item->id}}</td>
-          <td>{{ $item->producto }}</td>
+          <td>{{ $item->descripcion }}</td>
           <td>{{ $item->cantidad }}</td>
-          <td>${{ $item->precio }}</td>
           <td>{{ $item->fecha }}</td>
         </tr>
         @endforeach

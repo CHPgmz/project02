@@ -32,6 +32,8 @@ Route::post('/form', [PagesController::class, 'insertVenta'])->name('venta.inser
 
 Auth::routes();
 
+Route::get('profile', [PagesController::class, 'profileUser'])->name('perfil.user');
+
 //Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
@@ -49,7 +51,9 @@ Route::post('/invent', [InventarioController::class, 'insertIventario'])->name('
 
 ////Reportes
 
-Route::get('reporte', [PagesController::class, 'ReporteV'])->name('reporte.venta');
+Route::get('reporte', [PagesController::class, 'reporteV'])->name('reporte.venta');
+
+Route::get('reporteIn', [InventarioController::class, 'reporteIvt'])->name('reporte.inventario');
 
 
 

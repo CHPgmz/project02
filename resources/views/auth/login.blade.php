@@ -53,10 +53,10 @@
 
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="current-password" style=" border:  1px solid #39c;">
+                                        required autocomplete="current-password" style="border:  1px solid #39c;">
                                      <div style="margin-bottom:05px;">
-                                          <input  type="checkbox" id="mostrar_contrasena" title="clic para mostrar contraseña"/>
-                                          &nbsp;&nbsp;Mostrar Contraseña</div>
+                                          <input  type="checkbox" id="mostrar_contrasena" title="clic para mostrar contraseña">
+                                          <p>Mostrar Contraseña</p>
                                       </div>
                                           
                                     @error('password')
@@ -114,7 +114,5 @@
         });
     
     </script>
-   
-
 </body>
 </html>

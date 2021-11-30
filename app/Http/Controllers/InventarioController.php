@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 use App;
 
 
@@ -12,7 +13,7 @@ class InventarioController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('auth')->only('inventario', 'insertIventario', 'invRegistradas', 'invEliminar');
+        $this->middleware('auth')->only('inventario', 'insertIventario', 'invRegistradas', 'invEliminar', 'reporteIvt');
 
     }
 
@@ -52,5 +53,13 @@ class InventarioController extends Controller
         $invElim->delete();
 
         return back();
+    }
+
+    public function reporteIvt(){
+        $fecha = Carbon::now();
+        $fechaA = $fecha->format('Y-m-d');
+        $pdf = resolve('dompdf.wrapper');
+        $pdf = \PDF::loadView('reportes.reporte_inventario', compact('fechaA'));
+        return $pdf->stream('reporte_inventario.pdf');
     }
 }

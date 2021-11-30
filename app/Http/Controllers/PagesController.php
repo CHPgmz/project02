@@ -7,6 +7,9 @@ use App;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use PDF;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Crypt;
+use App\Models\User;
 use Dompdf\Dompdf;
 
 include_once "../vendor/autoload.php";
@@ -18,7 +21,7 @@ class PagesController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('auth')->only('ventaDetalle', 'inicioVentas', 'homePage', 'updateVenta', 'ReporteV');
+        $this->middleware('auth')->only('ventaDetalle', 'inicioVentas', 'homePage', 'updateVenta', 'reporteV', 'profileUser');
     }
 
 
@@ -26,7 +29,7 @@ class PagesController extends Controller
 
     public function ventasRegistradas()
     {
-        $ventasList = App\Models\Ventas::all();//paginate(10);
+        $ventasList = App\Models\Ventas::simplePaginate(05);
 
         return view('pages.ventas', compact('ventasList'));
     }
@@ -97,8 +100,12 @@ class PagesController extends Controller
 
     public function homePage()
     {
-        $ventasList = App\Models\Ventas::paginate(3);
+        //$ventasList = App\Models\Ventas::paginate(5);
+        //$ventasList = App\Models\Ventas::orderBy("id", "desc")->limit(10);
+        $ventasList = App\Models\Ventas::latest('id')->take(05)->get();
+
         $fechaA = Carbon::now();
+        
         //$fecha = $fechaA->format('d-m-Y');
 
         $venT = App\Models\Ventas::count('id');
@@ -107,13 +114,26 @@ class PagesController extends Controller
     }
 
     /////Reportes
-    public function ReporteV()
+    public function reporteV()
     {
-        
+        $fecha = Carbon::now();
+        $fechaA = $fecha->format('Y-m-d');
         $pdf = resolve('dompdf.wrapper');
-        $pdf = \PDF::loadView('reportes.reporte_venta');
-        return $pdf->download('reporte_venta.pdf');
-        // return view('reportes.reporte_venta');
+        $pdf = \PDF::loadView('reportes.reporte_venta', compact('fechaA'));
+        return $pdf->stream('reporte_venta.pdf');
+    }
+
+    public function profileUser(){
+        $name = Auth::user()->name;
+        $email = Auth::User()->email;
+
+        $pass = Auth::User()->password;
+
+        //$userE = User::findOrFail($id);
+        //$pass = Crypt::decryptString($passEn, $token);
+
+
+        return view('pages.profile', compact('name', 'email', 'pass'));
     }
 }
 
