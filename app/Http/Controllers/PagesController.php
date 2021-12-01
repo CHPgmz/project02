@@ -11,6 +11,9 @@ use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\User;
 use Dompdf\Dompdf;
+use Hash;
+use Validator;
+
 
 include_once "../vendor/autoload.php";
 
@@ -30,8 +33,9 @@ class PagesController extends Controller
     public function ventasRegistradas()
     {
         $ventasList = App\Models\Ventas::simplePaginate(05);
+        // $ventaId = App\Models\Ventas::findOrFail($id);
 
-        return view('pages.ventas', compact('ventasList'));
+        return view('pages.ventas', compact('ventasList',));
     }
 
     public function ventaDetalle($id)
@@ -134,6 +138,38 @@ class PagesController extends Controller
 
 
         return view('pages.profile', compact('name', 'email', 'pass'));
+    }
+
+    public function viewPassword(){
+        return view('pages.passw');
+    }
+
+    public function updatePassword(Request $request){
+        $rules= [
+
+            'mypassword' => 'required',
+            'password' => 'required|confirmed',
+
+        ];   
+        $messages = [
+            'mypassword.required' => 'El campo es requerido',
+            'password.required' => 'El campo es requerido',
+            'password.confirmed' => 'Los campos no coniciden',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if($validator->fails()){
+            return view('pages.passw')->withErrors($validator);
+        }else{
+            if(Hash::check($request->mypassword, Auth::user()->password)){
+                $user = new App\Models\User;
+                $user->where('email', '=', Auth::user()->email)
+                ->update(['password'=>bcrypt($request->password)]);
+                return view('pages.passw')->with('status', 'password cambiado con exito');
+            }else{
+                return view('pages.passw')->with('message', 'Campos Incorrectos');
+            }
+        }
     }
 }
 

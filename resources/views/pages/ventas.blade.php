@@ -41,7 +41,7 @@
                                         <i class="far fa-edit"></i>
                                         Editar
                                     </a> --}}
-                                    <a href="#" class="btn btn-success btn-sm" data-toggle="modal" id="#editar" data-target="#editar"><i class="far fa-edit"></i>Editar</a>
+                                    <a href="{{ route('ventas', $item->id) }}" class="btn btn-success btn-sm" data-toggle="modal" id="#editar" data-target="#editar" onclick="editar()"><i class="far fa-edit"></i>Editar</a>
 
                                     {{-- <form action="{{ route('eliminar.venta', $item->id) }}" method="POST"
                                         class="d-inline">
@@ -52,7 +52,7 @@
                                             <i class="far fa-trash-alt"></i>Eliminar</button>
                                     </form> --}}
                                     <button class="btn btn-danger btn-sm" data-target="#elm" id="#elm"
-                                        data-toggle="modal">Eliminar</button>
+                                        data-toggle="modal" type="submit" value="Delete">Eliminar</button>
                                 </td>
                             </tr>
 
@@ -97,7 +97,7 @@
     {{-- Modal (fin) --}}
 
 {{-- Modal: Sirve para editar datos de la venta --}}
-    <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    {{-- <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
     aria-hidden="true" style="width: 100%;">
     <div class="modal-dialog" role="document" >
         <div class="modal-content">
@@ -149,10 +149,19 @@
                     
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
     {{-- Modal fin --}}
 
 @endsection
 
+@section('editar')
+<script> 
+    function editar(){
+        
+        document.open(' {{ route('ventas', $item->id) }}';
+    }
+</script>
+    
+@endsection

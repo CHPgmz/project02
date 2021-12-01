@@ -16,16 +16,17 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('plugins/images/favicon.png') }}">
     <!-- Custom CSS -->
     <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css') }}">
     <!-- Custom CSS -->
-    <link href="{{ asset('css/style.min.css') }}" rel="stylesheet"> 
-    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <link href="{{ asset('css/style.min.css') }}" rel="stylesheet">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet"> --}}
 
-    
+
     {{-- <link rel="stylesheet" href="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css') }}" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> --}}
 
 
-     <script src="https://kit.fontawesome.com/2ead8049d9.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2ead8049d9.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
@@ -59,6 +60,7 @@
                         href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                    <a href="{{ route('home') }}" style="margin-left: 20px; font-size: 16px"><span class="text-white font-medium">Inicio</span></a>
 
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
                         <li class=" in">
@@ -70,16 +72,34 @@
                             </form>
                         </li>
                         <li>
-                            <a class="profile-pic" href="#">
+                            {{-- <a class="profile-pic" href="#">
                                 <img src="img/user-solid.png" alt="user-img" width="20">
                                 <span class="text-white font-medium">{{ Auth::user()->name }}</span>
+                            </a> --}}
+                        <li class="nav-item dropdown" style="margin-inline-end: 50px; ">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="img/user-solid.png" alt="user-img" width="20">
+                                <span class="text-white font-medium" style="font-size: 16px">{{ Auth::user()->name }}</span>
                             </a>
-                            <a class="profile-pic" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-right: 300px">
+                                <li><a class="dropdown-item" href="{{ route('vista.passwd')}}">Cambiar Contraseña</a></li>
+                                {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
+                                <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();" class="dropdown-item">
+                                        Cerrar Session</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        {{-- <a class="profile-pic" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();" class="dropdown-item">
-                                <span class="text-white font-medium">{{ __('Logout') }}</span></a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                @csrf
-                            </form>
+                            <span class="text-white font-medium">{{ __('Logout') }}</span></a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                        </form> --}}
                         </li>
                     </ul>
                 </div>
@@ -110,7 +130,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{ route('perfil.user') }}" aria-expanded="false">
-                                
+
                                 <i class="fas fa-users"></i>
                                 <span class="hide-menu">Empleados</span>
                             </a>
@@ -150,14 +170,14 @@
                             Inventario</a>
                     </div>
 
-                    <div class="rw-lg-9 col-sm-8 rw-md-8 rw-xs-12">
+                    {{-- <div class="rw-lg-9 col-sm-8 rw-md-8 rw-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">
                                 <li><a href="#" class="fw-normal">Dashboard</a></li>
                             </ol>
 
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
             </div>
@@ -174,7 +194,7 @@
     </div>
 
     <script src="{{ asset('plugins/bower_components/jquery/dist/jquery.min.js') }}"></script>
-    
+
     @yield('editar')
     <!-- <script src="{{ asset('bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script> -->
     <script src="{{ asset('js/app-style-switcher.js') }}"></script>
@@ -193,8 +213,11 @@
         <script src="{{ asset('js/bootstrap.min.js') }}"> </script> --}}
     <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></scri
-    <script src="https://kit.fontawesome.com/2ead8049d9.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js">
+        < /scri <
+        script src = "https://kit.fontawesome.com/2ead8049d9.js"
+        crossorigin = "anonymous" >
+    </script>
 
 </body>
 

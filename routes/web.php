@@ -34,6 +34,9 @@ Auth::routes();
 
 Route::get('profile', [PagesController::class, 'profileUser'])->name('perfil.user');
 
+Route::get('passwordView/', [PagesController::class, 'viewPassword'])->name('vista.passwd');
+Route::post('passChange/', [PagesController::class, 'updatePassword'])->name('change.password');
+
 //Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
