@@ -97,7 +97,7 @@
     {{-- Modal (fin) --}}
 
 {{-- Modal: Sirve para editar datos de la venta --}}
-    {{-- <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+     <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
     aria-hidden="true" style="width: 100%;">
     <div class="modal-dialog" role="document" >
         <div class="modal-content">
@@ -149,14 +149,14 @@
                     
                 </div>
             </div>
-        </div> --}}
+        </div> 
 
 
     {{-- Modal fin --}}
 
 @endsection
 
-@section('editar')
+{{-- @section('editar')
 <script> 
     function editar(){
         
@@ -164,4 +164,4 @@
     }
 </script>
     
-@endsection
+@endsection --}}
